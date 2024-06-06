@@ -52,7 +52,7 @@ class TaskDetails extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 16, top: 10, right: 5),
+        padding: const EdgeInsets.only(left: 16, top: 10, right: 16),
         child: Column(
           children: [
             SizedBox(
@@ -120,7 +120,7 @@ class TaskDetails extends StatelessWidget {
                   ),
                   whiteSpace(height: 10),
                   Text(
-                    'Design Task management App  Design Task management App  Design Task management App  Design Task management App  Design Task     ',
+                    'Design Task management App.Design Task management App Design Task management App Design Task management App Design',
                     style: M14,
                   ),
                   whiteSpace(height: 10),
@@ -136,7 +136,7 @@ class TaskDetails extends StatelessWidget {
               ),
             ),
             whiteSpace(height: 20),
-            Get.arguments['type'] == 'editable'
+            Get.arguments['status'] == 'WIP'
                 ? SizedBox(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -163,9 +163,49 @@ class TaskDetails extends StatelessWidget {
                       ],
                     ),
                   )
-                : SizedBox(),
+                : SizedBox(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Start Date',
+                              style:
+                                  R14.copyWith(color: black.withOpacity(0.5)),
+                            ),
+                            whiteSpace(height: 10),
+                            Text(
+                              '4Apr2024 ',
+                              style: M16,
+                            ),
+                            whiteSpace(height: 10),
+                          ],
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Start time',
+                              style:
+                                  R14.copyWith(color: black.withOpacity(0.5)),
+                            ),
+                            whiteSpace(height: 10),
+                            Text(
+                              '04:45PM',
+                              style: M16,
+                            ),
+                            whiteSpace(height: 10),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
             whiteSpace(height: 20),
-            Get.arguments['type'] == 'editable'
+            Get.arguments['status'] == 'WIP'
                 ? SizedBox(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -193,7 +233,8 @@ class TaskDetails extends StatelessWidget {
                     ),
                   )
                 : SizedBox(),
-            Get.arguments['type'] == 'editable'
+            Get.arguments['status'] == 'WIP' ||
+                    Get.arguments['status'] == 'PENDING'
                 ? SizedBox()
                 : SizedBox(
                     width: percentWidth(context: context, width: 85),

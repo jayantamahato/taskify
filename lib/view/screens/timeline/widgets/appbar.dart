@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/theme/font.dart';
 
-AppBar projectAppBar = AppBar(
+AppBar timelineAppBar = AppBar(
   leading: SizedBox(),
   centerTitle: true,
   title: Text(
-    'Projects',
+    'Timeline',
     style: B16,
   ),
 );

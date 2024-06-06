@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
     AppScreen _appscreen = AppScreen();
 
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Taskify',
       theme: AppTheme.light(),
       home: _appscreen.loginScreen,

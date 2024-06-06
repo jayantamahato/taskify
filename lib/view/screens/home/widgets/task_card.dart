@@ -16,7 +16,8 @@ class TaskCard extends StatelessWidget {
     return InkWell(
       onTap: () {
         Get.toNamed('/task-details', arguments: {
-          'type': status == Status.pending ? 'editable' : 'notEditable'
+          'type': status == Status.pending ? 'editable' : 'notEditable',
+          'status': status
         });
       },
       child: Container(
@@ -67,12 +68,12 @@ class TaskCard extends StatelessWidget {
                       ))
                   : status == Status.wip
                       ? SvgPicture.asset(
-                          'assets/icons/play.svg',
+                          'assets/icons/pause.svg',
                           height: 20,
                           width: 20,
                         )
                       : SvgPicture.asset(
-                          'assets/icons/pause.svg',
+                          'assets/icons/play.svg',
                           height: 20,
                           width: 20,
                         ),

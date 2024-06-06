@@ -35,11 +35,11 @@ class LoginScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Welcome Back',
+                        'Welcome back',
                         style: B16,
                       ),
                       Text(
-                        'Pleas Enter your email and password to login',
+                        'Please enter your email and password to login',
                         style: R10.copyWith(color: black.withOpacity(0.5)),
                       )
                     ],

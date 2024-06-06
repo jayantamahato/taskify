@@ -3,13 +3,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../../../controller/navigation_controller.dart';
+import '../../../../controller/task_controller.dart';
 import '../../../../core/colors/color.dart';
 import '../../../../core/theme/font.dart';
+import 'create_task.dart';
 
 class CustomNavbar extends StatelessWidget {
-  CustomNavbar({super.key});
+  final TaskController taskController;
+  final NavController navController;
+  CustomNavbar(
+      {super.key, required this.taskController, required this.navController});
 
-  final NavController _navController = Get.put(NavController());
   @override
   Widget build(BuildContext context) {
     return Obx(
@@ -18,14 +22,22 @@ class CustomNavbar extends StatelessWidget {
         child: BottomNavigationBar(
           enableFeedback: true,
           type: BottomNavigationBarType.fixed,
-          currentIndex: _navController.currentIndex.value,
+          currentIndex: navController.currentIndex.value,
           onTap: (index) {
             if (index == 2) {
               null;
+
+              showModalBottomSheet(
+                  isScrollControlled: true,
+                  enableDrag: true,
+                  context: context,
+                  builder: (context) => CreateTask(
+                        context: context,
+                        taskController: taskController,
+                      ));
               return;
-              //open create task pop up
             }
-            _navController.changeScreen(index: index);
+            navController.changeScreen(index: index);
           },
           elevation: 2,
           selectedItemColor: black,

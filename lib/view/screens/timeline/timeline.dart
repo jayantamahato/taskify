@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'widgets/appbar.dart';
-import 'widgets/project_card.dart';
-import 'widgets/search.dart';
+import 'widgets/timeline_card.dart';
+import 'widgets/date_time.dart';
 
 class TimelineScreen extends StatelessWidget {
   TimelineScreen({super.key});
@@ -50,13 +50,15 @@ class TimelineScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: projectAppBar,
+      appBar: timelineAppBar,
       body: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomSearchBar(),
+            DateAndTime(),
             ...data.map(
-              (e) => ProjectCard(
+              (e) => TimelineCard(
                   progress: e['progress'],
                   status: e['status'],
                   title: e['title'],

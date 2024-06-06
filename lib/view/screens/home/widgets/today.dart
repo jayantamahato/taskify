@@ -7,13 +7,19 @@ class Today extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SingleChildScrollView(
       child: Column(
         children: [
           TaskCard(status: Status.wip),
           TaskCard(
             status: Status.pending,
           ),
+          TaskCard(
+            status: Status.pending,
+          ),
+          TaskCard(
+            status: Status.pending,
+          )
         ],
       ),
     );

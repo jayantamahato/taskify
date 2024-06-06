@@ -5,15 +5,16 @@ import '../../../../core/colors/color.dart';
 import '../../../../core/theme/font.dart';
 import '../../../../utils/size.dart';
 import '../../../../utils/white_space.dart';
+import 'meet_card.dart';
 import 'user_card.dart';
 
-class ProjectCard extends StatelessWidget {
+class TimelineCard extends StatelessWidget {
   final List users;
   final String status;
   final String title;
   final int progress;
 
-  ProjectCard(
+  TimelineCard(
       {super.key,
       required this.users,
       required this.status,
@@ -37,18 +38,8 @@ class ProjectCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ListTile(
+            minVerticalPadding: 1,
             contentPadding: EdgeInsets.all(0),
-            leading: Container(
-              decoration: BoxDecoration(color: grey, shape: BoxShape.circle),
-              height: 32,
-              width: 32,
-              child: title == 'Kudos Website'
-                  ? Image.asset(
-                      'assets/images/kudos.png',
-                      fit: BoxFit.fill,
-                    )
-                  : Image.asset('assets/images/nImage.png'),
-            ),
             title: Text(
               title,
               style: M14,
@@ -65,32 +56,19 @@ class ProjectCard extends StatelessWidget {
             context: context,
             users: users,
           ),
-          SizedBox(
+          Container(
             width: percentWidth(context: context),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Chip(
-                  padding: EdgeInsets.all(8),
-                  side: BorderSide(color: grey),
-                  avatar: Container(
-                    decoration:
-                        BoxDecoration(shape: BoxShape.circle, color: error),
-                    height: 5,
-                    width: 5,
-                  ),
-                  color: MaterialStatePropertyAll(Colors.white),
-                  label: Text(
-                    'High Priority',
-                    style: R10,
-                  ),
-                ),
-                Text(
-                  status,
-                  style: M10.copyWith(
-                      color: status == 'Pending' ? warning : success),
-                )
-              ],
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  MeetCard(priority: 'High'),
+                  MeetCard(priority: 'Low'),
+                  MeetCard(priority: 'Mid'),
+                  MeetCard(priority: 'High'),
+                ],
+              ),
             ),
           ),
           SizedBox(
